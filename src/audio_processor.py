@@ -22,6 +22,10 @@ class AudioProcessor:
     def process_dir(self, src_dir, target_dir):
         os.makedirs(target_dir, exist_ok=True)
 
+        # Create or clear file
+        with open(target_dir + "/transcription.txt", "w") as file:
+            pass
+
         words = {}
         
         for file in os.listdir(src_dir):
@@ -37,7 +41,7 @@ class AudioProcessor:
     def process_file(self, words, target_dir, file_path):
         print("Processing " + file_path)
 
-        with open(target_dir + "/transcription.txt", "w") as file:
+        with open(target_dir + "/transcription.txt", "a") as file:
             for segment in self.transcriber.transcribe(file_path):
                 file.write(segment.text.strip() + "\n")
 
