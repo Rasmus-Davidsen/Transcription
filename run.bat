@@ -1,5 +1,5 @@
 @echo off
 
-python main.py audio output
+python main.py example_audio output
 
 pause
